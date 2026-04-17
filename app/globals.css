@@ -1,28 +1,165 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-@theme {
-  --color-gray-50: #f9fafb;
-  --color-gray-100: #f3f4f6;
-  --color-gray-200: #e5e7eb;
-  --color-gray-300: #d1d5db;
-  --color-gray-400: #9ca3af;
-  --color-gray-500: #6b7280;
-  --color-gray-600: #4b5563;
-  --color-gray-700: #374151;
-  --color-gray-800: #1f2937;
-  --color-gray-900: #111827;
-  --color-purple-100: #f3e8ff;
-  --color-purple-700: #7c3aed;
-  --color-blue-100: #dbeafe;
-  --color-blue-700: #1d4ed8;
-  --color-green-100: #dcfce7;
-  --color-green-700: #15803d;
-  --color-pink-100: #fce7f3;
-  --color-pink-700: #be185d;
-  --color-amber-100: #fef3c7;
-  --color-amber-700: #b45309;
+:root {
+  /* Warm neutral palette */
+  --color-bg: #f9f6f0;
+  --color-bg-alt: #f0ece4;
+  --color-surface: #ffffff;
+  --color-border: #e4ddd3;
+  --color-border-hover: #c9b99a;
+
+  /* Text */
+  --color-text: #1c1a17;
+  --color-text-secondary: #6b6560;
+  --color-text-tertiary: #9c9590;
+
+  /* Accent — warm ochre */
+  --color-accent: #c47d1e;
+  --color-accent-hover: #a86918;
+  --color-accent-subtle: #fdf3e3;
+
+  /* Category colors — warm, earthy */
+  --color-cat-ai: #5b4fc4;
+  --color-cat-infra: #1e6f9f;
+  --color-cat-devtools: #297a4a;
+  --color-cat-design: #b84e82;
+  --color-cat-business: #9f6b1e;
+  --color-cat-other: #5a5652;
+
+  /* Spacing — 4pt base */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Typography */
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-sans: 'Manrope', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Elevation */
+  --shadow-sm: 0 1px 3px rgba(28, 26, 23, 0.06), 0 1px 2px rgba(28, 26, 23, 0.04);
+  --shadow-md: 0 4px 12px rgba(28, 26, 23, 0.08), 0 2px 4px rgba(28, 26, 23, 0.04);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+::selection {
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: var(--font-sans);
+}
+
+/* Typography scale */
+.text-xs { font-size: 12px; line-height: 1.5; }
+.text-sm { font-size: 13px; line-height: 1.5; }
+.text-base { font-size: 15px; line-height: 1.6; }
+.text-lg { font-size: 18px; line-height: 1.4; }
+.text-xl { font-size: 22px; line-height: 1.3; }
+.text-2xl { font-size: 28px; line-height: 1.2; }
+.text-3xl { font-size: 36px; line-height: 1.1; }
+
+.font-regular { font-weight: 400; }
+.font-medium { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold { font-weight: 700; }
+.font-black { font-weight: 800; }
+
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
+.text-accent { color: var(--color-accent); }
+
+.serif { font-family: var(--font-serif); }
+.mono { font-family: var(--font-mono); }
+
+/* Layout */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInFast {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in { animation: fadeIn 0.4s ease-out; }
+.animate-scale-in { animation: scaleIn 0.3s ease-out; }
+.animate-slide-down { animation: slideDown 0.35s ease-out; }
