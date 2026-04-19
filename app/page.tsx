@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { useRouter } from "next/navigation";
 
 interface Bookmark {
   id: number;
@@ -505,6 +506,13 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [editingBookmark, setEditingBookmark] = useState<Bookmark | null>(null);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
+
+  async function handleLogout() {
+    await fetch("/api/auth/logout", { method: "POST" });
+    router.push("/login");
+    router.refresh();
+  }
 
   useEffect(() => {
     fetchBookmarks();
@@ -593,6 +601,9 @@ export default function Home() {
                 <line x1="5" y1="12" x2="19" y2="12"/>
               </svg>
               Add
+            </button>
+            <button onClick={handleLogout} className="logout-btn" title="Log out">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             </button>
           </div>
         </div>
@@ -766,6 +777,18 @@ export default function Home() {
         }
         .add-btn:hover { background: #2d2b27; }
         .add-btn:active { transform: scale(0.97); }
+        .logout-btn {
+          width: 36px;
+          height: 36px;
+          border-radius: var(--radius-sm);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--color-text-tertiary);
+          border: 1px solid var(--color-border);
+          transition: background 0.15s, color 0.15s;
+        }
+        .logout-btn:hover { background: #fef2f2; color: #dc2626; border-color: #fecaca; }
 
         /* Hero */
         .hero {
