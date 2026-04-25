@@ -14,7 +14,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <script defer src="https://umami.heyturgay.com/script.js" data-website-id="8efb473c-bb85-484c-acc7-33d412b9b335"></script>
+      </body>
     </html>
   );
 }

@@ -35,7 +35,7 @@ function BookmarkCard({ b, onEdit, onDelete }: {
   })();
 
   return (
-    <article className="bookmark-card animate-fade-in" style={{ animationFillMode: "both" }}>
+    <article className="bookmark-card animate-fade-in" style={{ animationFillMode: "both", background: cat.bg, borderLeftColor: cat.color, borderLeftWidth: "3px" }}>
       <div className="bookmark-inner">
         <div className="bookmark-left">
           <div className="bookmark-eyebrow">
